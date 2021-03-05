@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--  class: 右键 -> copy reference  -->
+    <bean id="videoId" class="net.xdclass.spring.domain.Video">
+        <property name="id" value="9"/>
+        <property name="title" value="Spring 5.x"/>
+    </bean>
+
+    <bean id="videoOrderId" class="net.xdclass.spring.dao.VideoOrder">
+        <property name="id" value="8" />
+        <property name="orderNumber" value="25956562389" />
+        <!--   dependency injection     -->
+        <property name="video" ref="videoId" />
+    </bean>
+<!--    <bean id="videoService" class="net.xdclass.spring.service.VideoService">-->
+
+<!--    </bean>-->
+
+</beans>
