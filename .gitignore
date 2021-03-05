@@ -1,5 +1,5 @@
 # Object file
 *.o
 
-# Ada Library Information
-*.ali
+xd_spring/.idea/*
+xd_spring/xd_spring.iml
