@@ -3,10 +3,19 @@ package net.xdclass.spring.domain;
 import java.util.List;
 import java.util.Map;
 
-public class Video {
+public class VideoDpl {
 
     private int id;
     private String title;
+    private String summary;
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
 
     // Testing the injection of List and Map
     private List<String> chapterList;
@@ -28,10 +37,10 @@ public class Video {
         this.videoMap = videoMap;
     }
 
-    public Video() {
+    public VideoDpl() {
     }
 
-    public Video(String title) {
+    public VideoDpl(String title) {
         this.title = title;
     }
 
