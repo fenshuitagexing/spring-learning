@@ -12,6 +12,14 @@ public class Video {
     private List<String> chapterList;
     private Map<Integer, String> videoMap;
 
+    public void init() {
+        System.out.println("Invoke init() of Video class");
+    }
+
+    public void destroy() {
+        System.out.println("Invoke destroy() of Video class");
+    }
+
     public List<String> getChapterList() {
         return chapterList;
     }
@@ -29,6 +37,7 @@ public class Video {
     }
 
     public Video() {
+        System.out.println("Invoke the no-arg constructor of Video");
     }
 
     public Video(String title) {

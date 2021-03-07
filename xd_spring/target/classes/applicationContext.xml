@@ -4,24 +4,25 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
     <!--  Setter Injection -->
     <!--  class: no-arg constructor of Video class is required -->
     <!--  create an instance of Video class through no-arg constructor, -->
     <!--  then invoke the setter to inject the title attribute  -->
-
-    <bean id="videoId" class="net.xdclass.spring.domain.Video">
+    <bean id="videoId" class="net.xdclass.spring.domain.Video" init-method="init" destroy-method="destroy">
         <property name="id" value="9"/>
         <property name="title" value="Spring 5.x"/>
     </bean>
 
-    <bean id="videoDplId" class="net.xdclass.spring.domain.VideoDpl" parent="videoId">
-        <property name="summary" value="summary content"/>
-    </bean>
+<!--    <bean id="videoDplId" class="net.xdclass.spring.domain.VideoDpl" parent="videoId">-->
+<!--        <property name="summary" value="summary content"/>-->
+<!--    </bean>-->
 
+    <bean class="net.xdclass.spring.processor.CustomBeanPostProcessor" />
+    <bean class="net.xdclass.spring.processor.CustomBeanPostProcessorA" />
 
     <!--  Constructor Injection -->
     <!--  class:  one-arg(title) constructor of Video class is required -->
-
 <!--    <bean id="videoId" class="net.xdclass.spring.domain.Video" scope="singleton">-->
 <!--        <constructor-arg name="title" value="专题第一季" />-->
 <!--    </bean>-->
@@ -48,14 +49,16 @@
 <!--    </bean>-->
 
     <!--  VideoOrder所依赖的Video对象，也是通过Video类的set方法注入  -->
-    <bean id="videoOrderId" class="net.xdclass.spring.domain.VideoOrder">
+    <!--  Instantiation of Video is set to perform before VideoOrder through depends-on  -->
+<!--    <bean id="videoOrderId" class="net.xdclass.spring.domain.VideoOrder" depends-on="videoId">-->
+<!--        <property name="id" value="8" />-->
+<!--        <property name="orderNumber" value="25956562389" />-->
+<!--        &lt;!&ndash;   dependency injection     &ndash;&gt;-->
+<!--        <property name="video" ref="videoId" />-->
+<!--    </bean>-->
+    <bean id="videoOrderId" class="net.xdclass.spring.domain.VideoOrder" autowire="byType">
         <property name="id" value="8" />
         <property name="orderNumber" value="25956562389" />
-        <!--   dependency injection     -->
-        <property name="video" ref="videoId" />
     </bean>
-<!--    <bean id="videoService" class="net.xdclass.spring.service.VideoService">-->
-
-<!--    </bean>-->
 
 </beans>

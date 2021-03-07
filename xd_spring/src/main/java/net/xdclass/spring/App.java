@@ -18,16 +18,17 @@ public class App {
         System.out.println(videoOrder.getOrderNumber());
         System.out.println("VideoOrder: " + videoOrder.getVideo().getTitle());
 
-        testInjectionOfCollection(applicationContext);
+        //testInjectionOfCollection(applicationContext);
 
-        testDuplication(applicationContext);
+        //testDuplication(applicationContext);
 
+        ((ClassPathXmlApplicationContext)applicationContext).registerShutdownHook();
     }
 
     private static void testInjectionOfCollection(ApplicationContext applicationContext) {
-//        Video video = (Video) applicationContext.getBean("videoId");
-//        System.out.println(video.getChapterList());
-//        System.out.println(video.getVideoMap().entrySet());
+        Video video = (Video) applicationContext.getBean("videoId");
+        System.out.println(video.getChapterList());
+        System.out.println(video.getVideoMap().entrySet());
     }
 
     private static void testDuplication(ApplicationContext applicationContext) {

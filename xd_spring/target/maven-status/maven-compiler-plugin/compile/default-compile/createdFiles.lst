@@ -1,0 +1,9 @@
+net\xdclass\spring\dao\VideoDao.class
+net\xdclass\spring\processor\CustomBeanPostProcessor.class
+net\xdclass\spring\controller\VideoController.class
+net\xdclass\spring\service\VideoService.class
+net\xdclass\spring\domain\Video.class
+net\xdclass\spring\App.class
+net\xdclass\spring\domain\VideoOrder.class
+net\xdclass\spring\processor\CustomBeanPostProcessorA.class
+net\xdclass\spring\domain\VideoDpl.class
