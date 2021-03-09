@@ -2,7 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd"
+       xmlns:aop="http://www.springframework.org/schema/aop">
 
 
     <!--  Setter Injection -->
@@ -56,9 +59,29 @@
 <!--        &lt;!&ndash;   dependency injection     &ndash;&gt;-->
 <!--        <property name="video" ref="videoId" />-->
 <!--    </bean>-->
-    <bean id="videoOrderId" class="net.xdclass.spring.domain.VideoOrder" autowire="byType">
-        <property name="id" value="8" />
-        <property name="orderNumber" value="25956562389" />
-    </bean>
+<!--    <bean id="videoOrderId" class="net.xdclass.spring.domain.VideoOrder" autowire="byType">-->
+<!--        <property name="id" value="8" />-->
+<!--        <property name="orderNumber" value="25956562389" />-->
+<!--    </bean>-->
 
+
+    <!--  横切关注点  -->
+    <bean id="timeHandler" class="net.xdclass.spring.aop.TimeHandler" />
+
+    <bean id="videoService" class="net.xdclass.spring.service.VideoServiceImpl"/>
+
+    <aop:config>
+
+        <!--  横切关注点  -->
+        <aop:aspect id="timeAspect" ref="timeHandler">
+
+            <!--     定义切入点表达式       -->
+            <aop:pointcut id="allMethodsPrintLog" expression="execution(* net.xdclass.spring.service.VideoService.*(..))"></aop:pointcut>
+
+            <!--     配置前置通知和后置通知       -->
+            <aop:before method="printBefore" pointcut-ref="allMethodsPrintLog" />
+            <aop:after method="printAfter" pointcut-ref="allMethodsPrintLog"/>
+
+        </aop:aspect>
+    </aop:config>
 </beans>

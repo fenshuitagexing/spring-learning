@@ -45,4 +45,12 @@ public class VideoOrder {
         System.out.println("Invoke setVideo() of VideoOrder");
         this.video = video;
     }
+
+    public void init() {
+        System.out.println("VideoOrder init");
+    }
+
+    public void destroy() {
+        System.out.println("VideoOrder destroy");
+    }
 }
