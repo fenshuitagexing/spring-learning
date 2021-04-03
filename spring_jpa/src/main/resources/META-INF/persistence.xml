@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+
+    <persistence-unit name="myJpa" transaction-type="RESOURCE_LOCAL">
+        <!-- The implementation of JPA -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <properties>
+            <!-- Database information -->
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="Hello@Mysql"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306"/>
+
+            <!-- Configurations for the implementation of JPA -->
+            <property name="hibernate.show_sql" value="true"/>
+
+            <!-- If creates table automatically
+                 create:  create a new table at runtime and delete the existing table
+                 update:  create a new table at runtime and not delete the existing table
+                 none:    does not create table -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+        </properties>
+
+
+    </persistence-unit>
+</persistence>
